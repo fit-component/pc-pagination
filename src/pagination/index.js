@@ -8,16 +8,20 @@ export default class ButtonGroup extends React.Component {
         this.state = {}
     }
 
+    jump(page) {
+        this.refs.child.jump(page)
+    }
+
     render() {
         let child = null
 
         if (this.props.allPage) {
             child = (
-                <AllPage {...this.props}/>
+                <AllPage ref="child" {...this.props}/>
             )
         } else {
             child = (
-                <Simple {...this.props}/>
+                <Simple ref="child" {...this.props}/>
             )
         }
 
