@@ -43,6 +43,14 @@ export default class AllPage extends React.Component {
         }
     }
 
+    // 外部调用翻页
+    jump(page) {
+        let activeButtonName
+        if (page === this.state.currentPage)return
+
+        this.handleChange(page, false, page)
+    }
+
     handleChange(page, disable, activeButtonName) {
         if (disable)return
         let tempPage = this.state.currentPage
@@ -142,8 +150,13 @@ export default class AllPage extends React.Component {
 }
 
 AllPage.defaultProps = {
+    // @desc 初始分页
     defaultPage: 1,
+
+    // @desc 总页数
     allPage: 10,
+
+    // @desc 修改分页的回调
     onChange: ()=> {
     }
 }

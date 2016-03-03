@@ -11,6 +11,20 @@ export default class SimplePagination extends React.Component {
         }
     }
 
+    // 外部调用翻页
+    jump(page) {
+        let activeButtonName
+        if (page === this.state.currentPage)return
+        if (page > this.state.currentPage) {
+            activeButtonName = 'after'
+        }
+        if (page < this.state.currentPage) {
+            activeButtonName = 'before'
+        }
+
+        this.handleChange(page, false, activeButtonName)
+    }
+
     // 翻页
     handleChange(page, disable, activeButtonName) {
         if (disable)return
@@ -74,7 +88,10 @@ export default class SimplePagination extends React.Component {
 }
 
 SimplePagination.defaultProps = {
+    // 初始分页数
     defaultPage: 1,
+
+    // 修改分页的回调
     onChange: ()=> {
     }
 }
