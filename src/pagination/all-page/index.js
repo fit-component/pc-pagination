@@ -104,6 +104,7 @@ export default class AllPage extends React.Component {
         let middleNumbers = middleNum.map((number, index)=> {
             if (number !== null) {
                 let numberClass = classNames({
+                    'number-button': true,
                     'disabled': this.props.loading,
                     'active': number === this.state.currentPage && !this.props.loading
                 })

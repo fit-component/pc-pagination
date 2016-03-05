@@ -15,9 +15,14 @@ export default class SimplePagination extends React.Component {
     jump(page) {
         let activeButtonName
         if (page === this.state.currentPage)return
+
         if (page > this.state.currentPage) {
+            if (!this.props.next) {
+                return
+            }
             activeButtonName = 'after'
         }
+
         if (page < this.state.currentPage) {
             activeButtonName = 'before'
         }
@@ -71,13 +76,15 @@ export default class SimplePagination extends React.Component {
                     <li>
                         <span onClick={this.handleChange.bind(this,this.state.currentPage-1,(this.state.currentPage === 1 || this.props.loading),'before')}
                               className={beforeClass}>
-                            {beforeLoading ? beforeLoading : null}上一页
+                            {beforeLoading ? beforeLoading : null}
+                            上一页
                         </span>
                     </li>
                     <li>
                         <span onClick={this.handleChange.bind(this,this.state.currentPage+1,(!this.props.next || this.props.loading),'after')}
                               className={afterClass}>
-                            下一页{afterLoading ? afterLoading : null}
+                            下一页
+                            {afterLoading ? afterLoading : null}
                         </span>
                     </li>
                 </ul>
@@ -87,10 +94,16 @@ export default class SimplePagination extends React.Component {
 }
 
 SimplePagination.defaultProps = {
-    // 初始分页数
+    // @desc 初始分页数
     defaultPage: 1,
 
-    // 修改分页的回调
+    // @desc 修改分页的回调
     onChange: ()=> {
-    }
+    },
+
+    // @desc 是否在loading
+    loading: false,
+
+    // @desc 是否有下一页
+    next: false
 }
