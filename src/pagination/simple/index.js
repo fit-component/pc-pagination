@@ -50,7 +50,6 @@ export default class SimplePagination extends React.Component {
         let beforeLoading = null
         let afterLoading = null
 
-
         switch (this.state.activeButtonName) {
         case 'before':
             if (!this.props.loading) break
