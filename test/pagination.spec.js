@@ -1,20 +1,12 @@
 import React from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
-import TestUtils from 'react-addons-test-utils'
+import { shallow, mount } from 'enzyme'
 import Pagination from 'fit-pagination'
 
 describe('fit-pagination', function () {
-    let beforeNode, afterNode
-
-    beforeEach(() => {
-        const node = TestUtils.renderIntoDocument(<Pagination next={true}/>)
-        beforeNode = TestUtils.findRenderedDOMComponentWithClass(node, 'before')
-        afterNode = TestUtils.findRenderedDOMComponentWithClass(node, 'after')
-    })
-
     it('有上一页,下一页这两个按钮', ()=> {
-        expect(beforeNode.textContent).toBe('上一页')
-        expect(afterNode.textContent).toBe('下一页')
+        const node = mount(<Pagination/>)
+        expect(node.find('.before').text()).to.eql('上一页')
+        expect(node.find('.after').text()).to.eql('下一页')
     })
 
     //it('单页初始状态,上一页不能点', ()=> {
