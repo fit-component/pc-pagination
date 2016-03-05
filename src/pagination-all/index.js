@@ -33,7 +33,7 @@ let getMiddleNumbers = (current, all)=> {
     return arr
 }
 
-export default class AllPage extends React.Component {
+export default class PaginationAll extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -150,7 +150,7 @@ export default class AllPage extends React.Component {
     }
 }
 
-AllPage.defaultProps = {
+PaginationAll.defaultProps = {
     // @desc 初始分页
     defaultPage: 1,
 
