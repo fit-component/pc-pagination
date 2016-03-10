@@ -42,14 +42,20 @@ export default class Pagination extends React.Component {
     }
 
     render() {
+        const {className, loading, next, ...others} = this.props
+        const classes = classNames({
+            '_namespace': true,
+            [className]: className
+        })
+
         let beforeClass = classNames({
             'before': true,
-            'disabled': this.state.currentPage === 1 || this.props.loading
+            'disabled': this.state.currentPage === 1 || loading
         })
 
         let afterClass = classNames({
             'after': true,
-            'disabled': !this.props.next || this.props.loading
+            'disabled': !next || loading
         })
 
         let beforeLoading = null
@@ -57,13 +63,13 @@ export default class Pagination extends React.Component {
 
         switch (this.state.activeButtonName) {
         case 'before':
-            if (!this.props.loading) break
+            if (!loading) break
             beforeLoading = (
                 <i className="fa fa-circle-o-notch fa-spin loading"/>
             )
             break
         case 'after':
-            if (!this.props.loading) break
+            if (!loading) break
             afterLoading = (
                 <i className="fa fa-circle-o-notch fa-spin loading"/>
             )
@@ -71,17 +77,17 @@ export default class Pagination extends React.Component {
         }
 
         return (
-            <nav className="_namespace">
+            <nav {...others} className={classes}>
                 <ul className="pager">
                     <li>
-                        <span onClick={this.handleChange.bind(this,this.state.currentPage-1,(this.state.currentPage === 1 || this.props.loading),'before')}
+                        <span onClick={this.handleChange.bind(this,this.state.currentPage-1,(this.state.currentPage === 1 || loading),'before')}
                               className={beforeClass}>
                             {beforeLoading ? beforeLoading : null}
                             上一页
                         </span>
                     </li>
                     <li>
-                        <span onClick={this.handleChange.bind(this,this.state.currentPage+1,(!this.props.next || this.props.loading),'after')}
+                        <span onClick={this.handleChange.bind(this,this.state.currentPage+1,(!next || loading),'after')}
                               className={afterClass}>
                             下一页
                             {afterLoading ? afterLoading : null}
