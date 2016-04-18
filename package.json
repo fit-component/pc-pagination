@@ -1,6 +1,6 @@
 {
   "name": "fit-pagination",
-  "version": "2.0.35",
+  "version": "3.0.0",
   "description": "分页",
   "main": "lib/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^0.14.7",
-    "classnames": "^2.2.1"
+    "react": "^15.0.1",
+    "classnames": "^2.2.3"
   }
 }
