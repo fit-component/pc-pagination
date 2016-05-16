@@ -1,44 +1,45 @@
 .pagination {
-  display: flex;
-  div {
-    user-select: none;
-    color: #23527c;
-    cursor: pointer;
-    padding: 4px 10px;
-    border: 1px solid #dee5e7;
-    &:hover {
-      background: whitesmoke;
+    display: flex;
+    div {
+        user-select: none;
+        color: #23527c;
+        cursor: pointer;
+        padding: 8px 12px;
+        border: 1px solid #dee5e7;
+        font-size: 14px;
+        &:hover {
+            background: whitesmoke;
+        }
+        &.disabled {
+            color: #818a91;
+            cursor: not-allowed;
+            background-color: #fff;
+        }
     }
-    &.disabled {
-      color: #818a91;
-      cursor: not-allowed;
-      background-color: #fff;
+    div + div {
+        border-left: none;
     }
-  }
-  div + div {
-    border-left: none;
-  }
-  .loading {
-    width: 14px;
-    height: 14px;
-  }
-  .before {
     .loading {
-      margin-right: 5px;
+        width: 14px;
+        height: 14px;
     }
-  }
-  .after {
-    .loading {
-      margin-left: 5px;
+    .before {
+        .loading {
+            margin-right: 5px;
+        }
     }
-  }
-  .active {
-    background-color: #337ab7;
-    color: white;
-    cursor: default;
-    &:hover {
-      background-color: #337ab7;
-      color: white;
+    .after {
+        .loading {
+            margin-left: 5px;
+        }
     }
-  }
+    .active {
+        background-color: #337ab7;
+        color: white;
+        cursor: default;
+        &:hover {
+            background-color: #337ab7;
+            color: white;
+        }
+    }
 }

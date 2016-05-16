@@ -1,12 +1,12 @@
 import React from 'react'
 import classNames from 'classnames'
-import './index.scss'
+import {Button, ButtonGroup} from '../../../button/src'
 
 export default class Pagination extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentPage: this.props.defaultPage,
+            currentPage     : this.props.defaultPage,
             activeButtonName: ''
         }
     }
@@ -34,7 +34,7 @@ export default class Pagination extends React.Component {
     handleChange(page, disable, activeButtonName) {
         if (disable)return
         this.setState({
-            currentPage: page,
+            currentPage     : page,
             activeButtonName: activeButtonName
         }, ()=> {
             this.props.onChange(page)
@@ -45,56 +45,22 @@ export default class Pagination extends React.Component {
         const {className, loading, next, ...others} = this.props
         const classes = classNames({
             '_namespace': true,
-            [className]: className
+            [className] : className
         })
-
-        let beforeClass = classNames({
-            'before': true,
-            'disabled': this.state.currentPage === 1 || loading
-        })
-
-        let afterClass = classNames({
-            'after': true,
-            'disabled': !next || loading
-        })
-
-        let beforeLoading = null
-        let afterLoading = null
-
-        switch (this.state.activeButtonName) {
-        case 'before':
-            if (!loading) break
-            beforeLoading = (
-                <i className="fa fa-circle-o-notch fa-spin loading"/>
-            )
-            break
-        case 'after':
-            if (!loading) break
-            afterLoading = (
-                <i className="fa fa-circle-o-notch fa-spin loading"/>
-            )
-            break
-        }
 
         return (
-            <nav {...others} className={classes}>
-                <ul className="pager">
-                    <li>
-                        <span onClick={this.handleChange.bind(this,this.state.currentPage-1,(this.state.currentPage === 1 || loading),'before')}
-                              className={beforeClass}>
-                            {beforeLoading ? beforeLoading : null}
-                            上一页
-                        </span>
-                    </li>
-                    <li>
-                        <span onClick={this.handleChange.bind(this,this.state.currentPage+1,(!next || loading),'after')}
-                              className={afterClass}>
-                            下一页
-                            {afterLoading ? afterLoading : null}
-                        </span>
-                    </li>
-                </ul>
-            </nav>
+            <ButtonGroup {...others} className={classes}>
+                <Button onClick={this.handleChange.bind(this,this.state.currentPage-1,(this.state.currentPage === 1 || loading),'before')}
+                        loading={this.state.activeButtonName==='before'&&this.props.loading}
+                        disabled={this.state.currentPage===1}>
+                    上一页
+                </Button>
+                <Button onClick={this.handleChange.bind(this,this.state.currentPage+1,(!next || loading),'after')}
+                        loading={this.state.activeButtonName==='after'&&this.props.loading}
+                        disabled={!this.props.next}>
+                    下一页
+                </Button>
+            </ButtonGroup>
         )
     }
 }
