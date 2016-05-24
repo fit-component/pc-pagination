@@ -1,0 +1,17 @@
+.pagination {
+    display: flex;
+    .loading {
+        width: 14px;
+        height: 14px;
+    }
+    .before {
+        .loading {
+            margin-right: 5px;
+        }
+    }
+    .after {
+        .loading {
+            margin-left: 5px;
+        }
+    }
+}
