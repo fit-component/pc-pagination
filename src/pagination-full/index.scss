@@ -15,3 +15,12 @@
         }
     }
 }
+
+.inline-input {
+    display: inline-block;
+    float: left;
+    margin: 0;
+    .input {
+        padding: 7px 10px 7px 10px;
+    }
+}

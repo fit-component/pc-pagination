@@ -3,6 +3,7 @@ import * as classNames from 'classnames'
 import * as module from './module'
 import {others} from '../../../../common/transmit-transparently/src'
 import {Button, ButtonGroup} from '../../../button/src'
+import Input from '../../../input/src'
 import './index.scss'
 import '../font.scss'
 
@@ -56,7 +57,6 @@ export default class PaginationFull extends React.Component<module.PropsInterfac
     jump(page: number) {
         let activeButtonName: string
         if (page === this.state.currentPage) return
-
         this.handleChange(page, false, page.toString())
     }
 
@@ -70,6 +70,26 @@ export default class PaginationFull extends React.Component<module.PropsInterfac
         }, () => {
             this.props.onChange(page)
         })
+    }
+
+    handleJumpNumberChange(event: any) {
+        this.setState({
+            jumpPageNumber: event.target.value
+        })
+    }
+
+    doJump() {
+        const jumpNumber = parseInt(this.state.jumpPageNumber)
+        if (jumpNumber < 1 || jumpNumber > this.props.allPage)return
+        this.jump(jumpNumber)
+    }
+
+    handleJumpKeyUp(event: KeyboardEvent) {
+        if (event.keyCode === 13) {
+            const jumpNumber = parseInt(this.state.jumpPageNumber)
+            if (jumpNumber < 1 || jumpNumber > this.props.allPage)return
+            this.jump(jumpNumber)
+        }
     }
 
     render() {
@@ -118,11 +138,10 @@ export default class PaginationFull extends React.Component<module.PropsInterfac
 
         let middleNumbers = middleNum.map((number, index) => {
             if (number !== null) {
-                let numberClass = classNames({
-                    'number-button': true,
-                    'disabled': loading,
-                    'active': number === this.state.currentPage && !loading
-                })
+                let buttonProps = {
+                    disabled: loading,
+                    active: number === this.state.currentPage && !loading
+                }
 
                 let numberAfterLoading: any = null
                 if (this.state.activeButtonName === number.toString() && loading) {
@@ -133,9 +152,9 @@ export default class PaginationFull extends React.Component<module.PropsInterfac
                 }
 
                 return (
-                    <Button key={index}
-                            className={numberClass}
-                            onClick={this.handleChange.bind(this, number, loading || number === this.state.currentPage, number) }>{number}{numberAfterLoading ? numberAfterLoading : null}</Button>
+                    <Button {...buttonProps}
+                        key={index}
+                        onClick={this.handleChange.bind(this, number, loading || number === this.state.currentPage, number) }>{number}{numberAfterLoading ? numberAfterLoading : null}</Button>
                 )
             } else {
                 return (
@@ -144,6 +163,19 @@ export default class PaginationFull extends React.Component<module.PropsInterfac
                 )
             }
         })
+
+        // 跳转dom
+        let JumpInput: React.ReactElement<any> = null
+        let JumpButton: React.ReactElement<any> = null
+        if (this.props.enableJump) {
+            JumpInput =<Input className="inline-input"
+                              label="页码"
+                              placeholder="请输入数字"
+                              onChange={this.handleJumpNumberChange.bind(this)}
+                              onKeyUp={this.handleJumpKeyUp.bind(this)}
+                              style={{width:100}}/>
+            JumpButton = <Button onClick={this.doJump.bind(this)}>跳转</Button>
+        }
 
         const _others = others(new module.Props(), this.props)
 
@@ -161,6 +193,9 @@ export default class PaginationFull extends React.Component<module.PropsInterfac
                             onClick={this.handleChange.bind(this, this.state.currentPage + 1, (this.state.currentPage === allPage || loading), 'after') }>
                         <i className="fit-pagination-right"/>{afterLoading ? afterLoading : null}
                     </Button>
+
+                    {JumpInput}
+                    {JumpButton}
                 </ButtonGroup>
             </nav>
         )

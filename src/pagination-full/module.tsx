@@ -14,6 +14,11 @@ export interface PropsInterface {
      */
     onChange?: (page?: number) => void
 
+    /**
+     * 支持跳转
+     */
+    enableJump?: boolean
+
     [x: string]: any
 }
 
@@ -22,6 +27,7 @@ export class Props implements PropsInterface {
     allPage = 10
     onChange = () => {
     }
+    enableJump = false
 }
 
 export interface StateInterface {
@@ -39,6 +45,11 @@ export interface StateInterface {
      * 激活按钮名称
      */
     activeButtonName?: string
+
+    /**
+     * 跳转写的页数
+     */
+    jumpPageNumber?: string
 }
 
 export class State implements StateInterface {
