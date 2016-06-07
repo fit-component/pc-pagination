@@ -4,7 +4,7 @@ import {Button, ButtonGroup} from '../../../button/src'
 import * as module from './module'
 import {others} from '../../../../common/transmit-transparently/src'
 
-export default class Pagination extends React.Component<module.PropsInterface, module.StateInterface> {
+export default class Pagination extends React.Component <module.PropsInterface, module.StateInterface> {
     static defaultProps:module.PropsInterface = new module.Props()
     public state: module.StateInterface = new module.State()
 
