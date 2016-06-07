@@ -1,11 +1,11 @@
 ._global {
     @font-face {
         font-family: 'fit-pagination';
-        src: url('./font/fit-pagination.eot?r6arqz');
-        src: url('./font/fit-pagination.eot?r6arqz#iefix') format('embedded-opentype'),
-        url('./font/fit-pagination.ttf?r6arqz') format('truetype'),
-        url('./font/fit-pagination.woff?r6arqz') format('woff'),
-        url('./font/fit-pagination.svg?r6arqz#fit-pagination') format('svg');
+        src: url('./font/fit-pagination.eot');
+        src: url('./font/fit-pagination.eot') format('embedded-opentype'),
+        url('./font/fit-pagination.ttf') format('truetype'),
+        url('./font/fit-pagination.woff') format('woff'),
+        url('./font/fit-pagination.svg') format('svg');
         font-weight: normal;
         font-style: normal;
     }

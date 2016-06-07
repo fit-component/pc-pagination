@@ -1,6 +1,6 @@
 {
   "name": "fit-pagination",
-  "version": "4.0.14",
+  "version": "4.0.15",
   "description": "分页",
   "main": "lib/index.js",
   "scripts": {
