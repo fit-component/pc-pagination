@@ -5,7 +5,7 @@ import {others} from '../../../../common/transmit-transparently/src'
 import {Button, ButtonGroup} from '../../../button/src'
 import Input from '../../../input/src'
 import './index.scss'
-import '../font.scss'
+import '../font/font.scss'
 
 // 根据当前页,总页数生成展示页数列表,...用null表示
 const getMiddleNumbers = (current: number, all: number) => {
