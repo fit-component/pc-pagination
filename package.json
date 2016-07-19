@@ -1,6 +1,6 @@
 {
   "name": "fit-pagination",
-  "version": "4.0.36",
+  "version": "4.0.38",
   "description": "分页",
   "main": "lib/index.js",
   "scripts": {
@@ -13,11 +13,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^15.0.1",
+    "react": "^0.14.0 || ^15.0.0",
     "classnames": "^2.2.3",
-    "fit-button": "^3.1.29",
-    "fit-transmit-transparently": "^3.1.21",
-    "fit-input": "^5.0.19"
+    "fit-button": "^3.1.31",
+    "fit-transmit-transparently": "^3.1.23",
+    "fit-input": "^5.0.21"
   },
   "typings": "lib/index.d.ts"
 }
