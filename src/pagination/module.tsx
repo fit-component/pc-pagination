@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 export interface PropsInterface {
     /**
      * 初始分页数
@@ -18,7 +20,7 @@ export interface PropsInterface {
      * 是否有下一页
      */
     next?: boolean
-
+    
     [x: string]: any
 }
 
