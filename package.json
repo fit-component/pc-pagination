@@ -1,6 +1,6 @@
 {
   "name": "fit-pagination",
-  "version": "4.0.64",
+  "version": "4.0.66",
   "description": "分页",
   "main": "lib/index.js",
   "scripts": {
@@ -15,9 +15,9 @@
   "dependencies": {
     "react": "^0.14.0 || ^15.0.0",
     "classnames": "^2.2.3",
-    "fit-button": "^3.1.55",
-    "fit-transmit-transparently": "^3.1.46",
-    "fit-input": "^5.0.45"
+    "fit-button": "^3.1.57",
+    "fit-transmit-transparently": "^3.1.48",
+    "fit-input": "^5.0.47"
   },
   "typings": "lib/index.d.ts"
 }
